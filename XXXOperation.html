@@ -1,0 +1,37 @@
+{% extends "Home.html" %}
+
+{% block content %}
+    <h2>{{operation}}  AAA</h2>
+    <form id="frm" name="frm" method="post" action="/ProcessAAAOperation" enctype="multipart/form-data">
+               
+      
+     <input type="hidden" name="operation" value="{{operation}}"/>
+     <input type="hidden" name="unqid" value="{{row.FL111}}"/>
+
+      <div class="form-group row">
+        <label for="FL222" class="col-sm-3 col-form-label">FL222</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" {{'readonly' if operation == 'Delete'}} name="FL222" id="FL222" placeholder="FL222" value="{{row.FL222}}" required>
+        </div>
+      </div>
+	      <div class="form-group row">
+        <label for="FL222" class="col-sm-3 col-form-label">FL333</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" {{'readonly' if operation == 'Delete'}} name="FL333" id="FL333" placeholder="FL333" value="{{row.FL333}}" required>
+        </div>
+      </div>
+      
+      <div class="form-group row">
+		<label for="CL111" class="col-sm-3 col-form-label">CL111</label>
+        <div class="col-sm-9">
+          <input type="checkbox"  {{'disabled' if operation == 'Delete'}} name="CL111" placeholder="CL111" {{'checked' if row.CL111 == 1}}/>
+        </div>
+      </div>
+      
+       <div class="text-center">
+            <button type="submit" class="btn btn-outline-primary btn-sm ">{{operation}}</button>
+            <a href="/AAAListing" class="btn btn-outline-primary btn-sm ">Cancel</a>            
+      </div>
+    </form>
+    
+{% endblock %}

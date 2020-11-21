@@ -1,0 +1,16 @@
+{% extends "Super.html" %}
+
+{% block projectcontent %}
+    <div id="div1">
+	{% if msgType == 'Error' %}
+		<h2 class="alert alert-danger">{{message}}</h2>
+     {% endif %}
+	{% if msgType == 'Success' %}
+		<h2 class="alert alert-success">{{message}}</h2>
+     {% endif %}
+	{% if msgType == 'info' %}
+		<h2 class="alert alert-info">{{message}}</h2>
+     {% endif %}   	 
+    </div>
+
+{% endblock %}

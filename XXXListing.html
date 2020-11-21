@@ -1,0 +1,35 @@
+{% extends "Home.html" %}
+
+{% block content %}
+    <h2 style="color:white">AAA</h2>
+    
+<div class="text-center"><a href="/AAAOperation?operation=Create" class="btn btn-outline-info btn-sm ">Create</a></div>
+    <table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      
+      <th scope="col">FL222</th>
+      <th scope="col">FL333</th>
+      <th scope="col">Action</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in records %}
+        <tr>
+            <td>{{ row.FL222 }}</td>
+            <td>{{ row.FL333}}</td>
+        <td>
+            <a href="/AAAOperation?operation=Edit&unqid={{row.FL111}}" class="btn btn-outline-warning btn-sm ">Edit</a>
+            <a href="/AAAOperation?operation=Delete&unqid={{row.FL111}}" class="btn btn-outline-warning btn-sm ">Delete</a>
+        </td>
+        </tr>
+    {% endfor %}
+   </tbody>
+</table>
+<div class="text-center"><a href="/AAAOperation?operation=Create" class="btn btn-outline-info btn-sm ">Create</a></div>
+{% endblock %}
+
+
+
+

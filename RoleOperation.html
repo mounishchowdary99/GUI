@@ -1,0 +1,54 @@
+{% extends "Home.html" %}
+
+{% block content %}
+    <h2>{{operation}}  Role</h2>
+    <form id="frm" name="frm" method="post" action="/ProcessRoleOperation" enctype="multipart/form-data">
+               
+      
+     <input type="hidden" name="operation" value="{{operation}}"/>
+     <input type="hidden" name="unqid" value="{{row.roleID}}"/>
+
+      <div class="form-group row">
+        <label for="roleName" class="col-sm-3 col-form-label">Role Name</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" {{'readonly' if operation == 'Delete'}} name="roleName" id="roleName" placeholder="Role Name" value="{{row.roleName}}" required>
+        </div>
+      </div>
+	   <div class="form-group row">
+        <label for="canRole" class="col-sm-3 col-form-label">Can Role</label>
+        <div class="col-sm-9">
+          <input type="checkbox"  {{'disabled' if operation == 'Delete'}} name="canRole" placeholder="canRole" {{'checked' if row.canRole == 1}}/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="canUser" class="col-sm-3 col-form-label">Can User</label>
+        <div class="col-sm-9">
+          <input type="checkbox"  {{'disabled' if operation == 'Delete'}} name="canUser" placeholder="canUser" {{'checked' if row.canUser == 1}}/>
+        </div>
+      </div>
+      
+      <div class="form-group row">
+		<label for="CL111" class="col-sm-3 col-form-label">CL111</label>
+        <div class="col-sm-9">
+          <input type="checkbox"  {{'disabled' if operation == 'Delete'}} name="CL111" placeholder="CL111" {{'checked' if row.CL111 == 1}}/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="CL222" class="col-sm-3 col-form-label">CL222</label>
+        <div class="col-sm-9">
+          <input type="checkbox"  {{'disabled' if operation == 'Delete'}} name="CL222" placeholder="CL222" {{'checked' if row.CL222 == 1}}/>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="CL333" class="col-sm-3 col-form-label">CL333</label>
+        <div class="col-sm-9">
+          <input type="checkbox"  {{'disabled' if operation == 'Delete'}} name="CL333" placeholder="CL333" {{'checked' if row.CL333 == 1}}/>
+        </div>
+      </div>
+       <div class="text-center">
+            <button type="submit" class="btn btn-outline-primary btn-sm ">{{operation}}</button>
+            <a href="/RoleListing" class="btn btn-outline-primary btn-sm ">Cancel</a>            
+      </div>
+    </form>
+    
+{% endblock %}

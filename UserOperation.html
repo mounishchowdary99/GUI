@@ -1,0 +1,58 @@
+{% extends "Home.html" %}
+
+{% block content %}
+    <h2>{{operation}}  Upload Data</h2>
+    <form id="frm" name="frm" method="post" action="/ProcessUserOperation" enctype="multipart/form-data">
+               
+      
+     <input type="hidden" name="operation" value="{{operation}}"/>
+     <input type="hidden" name="unqid" value="{{row.userID}}"/>
+     <div class="form-group row">
+        <label for="userName" class="col-sm-3 col-form-label">User Name</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" {{'readonly' if operation == 'Delete'}} name="userName" id="userName" placeholder="User Name" value="{{row.userName}}" required>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="emailid" class="col-sm-3 col-form-label">Email ID</label>
+        <div class="col-sm-9">
+          <input type="email" class="form-control" {{'readonly' if operation == 'Delete'}} name="emailid" id="emailid" placeholder="Email ID" value="{{row.emailid}}" required>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="password" class="col-sm-3 col-form-label">Password</label>
+        <div class="col-sm-9">
+          <input type="password" class="form-control" {{'readonly' if operation == 'Delete'}} name="password" id="password" placeholder="Password" value="{{row.password}}" required>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="contactNo" class="col-sm-3 col-form-label">Contact No</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" {{'readonly' if operation == 'Delete'}} name="contactNo" id="contactNo" placeholder="Contact No" value="{{row.contactNo}}" required>
+        </div>
+      </div>
+        <div class="form-group row">
+        <label for="RoleID" class="col-sm-3 col-form-label">Role</label>
+        <div class="col-sm-9">
+            <select name="roleID" class="form-control" {{'disabled' if operation == 'Delete'}}>
+            {% for roleDDObj in rolesDDList %}
+                <option {{'selected' if roleDDObj.roleID == row.roleModel.roleID}} value="{{roleDDObj.roleID}}">{{roleDDObj.roleName}}</option>
+            {% endfor %}
+            </select>
+        </div>
+      </div>
+      
+      <div class="form-group row">
+		<label for="isActive" class="col-sm-3 col-form-label">Is Active</label>
+        <div class="col-sm-9">
+          <input type="checkbox"  {{'disabled' if operation == 'Delete'}} name="isActive" placeholder="isActive" {{'checked' if row.isActive == 1}}/>
+        </div>
+      </div>
+      
+       <div class="text-center">
+            <button type="submit" class="btn btn-outline-primary btn-sm ">{{operation}}</button>
+            <a href="/UserListing" class="btn btn-outline-primary btn-sm ">Cancel</a>            
+      </div>
+    </form>
+    
+{% endblock %}

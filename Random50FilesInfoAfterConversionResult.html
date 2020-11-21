@@ -1,0 +1,26 @@
+{% extends "Home.html" %}
+
+{% block content %}
+    <h2 style="">Random 50 Dataset Files Info After Conversion Result</h2>
+    <table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+
+
+      <th scope="col">Source</th>
+      <th scope="col">GUI File Name</th>
+      <th scope="col">PNG FIle Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in records %}
+        <tr>
+
+            <td>{{ row[0] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+        </tr>
+    {% endfor %}
+   </tbody>
+</table>
+{% endblock %}
